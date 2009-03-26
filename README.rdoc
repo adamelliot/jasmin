@@ -6,7 +6,7 @@ in the public/javascripts folder. Much of the code was borrowed from the SASS
 part of HAML. You will need the jsmin gem:
 
   gem install jsmin
-  script/install plugin git://github.com/adamelliot/jasmin.git
+  script/plugin install git://github.com/adamelliot/jasmin.git
   
 == Usage
 
