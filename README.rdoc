@@ -13,7 +13,7 @@ part of HAML. You will need the jsmin gem:
 If you want to use Jasmin all the time (by default it's only on in production
 to make sure JS debugging isn't a nightmere) add an initializer:
 
-  Jasmin.options[:alway_minify] = true
+  Jasmin.options[:always_minify] = true
 
 Any files that you don't want minified just leave in the javascripts folder
 and they won't be touched. Make sure not to create a file of the same name
