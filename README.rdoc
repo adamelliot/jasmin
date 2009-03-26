@@ -15,6 +15,9 @@ to make sure JS debugging isn't a nightmere) add an initializer:
 
   Jasmin.options[:alway_minify] = true
 
+Any files that you don't want minified just leave in the javascripts folder
+and they won't be touched. Make sure not to create a file of the same name
+in the jasmin folder, otherwise it will be overwritten.
 
 == Options
 

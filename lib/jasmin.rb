@@ -50,10 +50,10 @@ module Jasmin
 
           filename = template_filename(name)
           result = begin
-                     if RAILS_ENV == "production" || options[:alway_minify]
+                     if RAILS_ENV == "production" || options[:always_minify]
                        JSMin.minify(File.read(filename))
                      else  
-                       File.read(filename))
+                       File.read(filename)
                      end
                    rescue Exception => e
                      exception_string(e)
