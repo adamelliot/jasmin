@@ -1,0 +1,57 @@
+= Jasmin
+
+Once installed there is little you need to do. Jazz takes any files in the 
+public/javascripts/jasmin folder runs jsmin over them and the sets them back
+in the public/javascripts folder. Much of the code was borrowed from the SASS
+part of HAML. You will need the jsmin gem:
+
+  gem install jsmin
+  script/install plugin git://github.com/adamelliot/jazz.git
+
+== Options
+
+As Jasmin is simple and doesn't require much modifying, but there are a couple
+options you can tweak (many of these were stolen from the SASS docs):
+
+:never_update
+Whether the JS files should never be updated, even if the template file changes. Setting this to true may give small performance gains. It always defaults to false.
+:always_update
+Whether the JS files should be updated every time a controller is accessed, as opposed to only when the template has been modified. Defaults to false. 
+:always_check
+Whether a Sass template should be checked for updates every time a controller is accessed, as opposed to only when the Rails server starts. If a Sass template has been updated, it will be recompiled and will overwrite the corresponding CSS file. Defaults to false in production mode, true otherwise. Only has meaning within Ruby on Rails or Merb.
+:full_exception
+Whether an error in the Sass code should cause Sass to provide a detailed description. If set to true, the specific error will be displayed along with a line number and source snippet. Otherwise, a simple uninformative error message will be displayed. Defaults to false in production mode, true otherwise. Only has meaning within Ruby on Rails or Merb.
+:template_location
+The directory where Sass templates should be read from. Defaults to RAILS_ROOT + "/public/stylesheets/sass" or MERB_ROOT + "/public/stylesheets/sass". Only has meaning within Ruby on Rails or Merb.
+:css_location
+The directory where CSS output should be written to. Defaults to RAILS_ROOT + "/public/stylesheets" or MERB_ROOT + "/public/stylesheets". Only has meaning within Ruby on Rails or Merb.
+  
+== Caution (taken from: http://www.crockford.com/javascript/jsmin.html)
+
+Be sure to retain your original source file. JSMin is a one-way trip: Once done, it cannot be undone.
+
+Do not put raw control characters inside a quoted string. That is an extremely bad practice. Use \xhh notation instead. JSMin will replace control characters with spaces or linefeeds.
+
+Use parens with confusing sequences of + or -. For example, minification changes
+
+  a + ++b
+into
+
+  a+++b
+which is interpreted as
+
+  a++ + b
+which is wrong. You can avoid this by using parens:
+
+  a + (++b)
+
+JSLint checks for all of these problems. It is suggested that JSLint be used before using JSMin.
+
+  http://www.jslint.com/
+  
+== Thanks
+
+Thanks to Hampton Catlin for HAML and SASS, made making Jasmin a piece of cake
+check them out at:
+
+  http://haml.hamptoncatlin.com/
