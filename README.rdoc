@@ -22,8 +22,7 @@ As Jasmin is simple and doesn't require much modifying, but there are a couple
 options you can tweak (many of these were stolen from the SASS docs):
 
 [<tt>:never_update</tt>]      Whether the JS files should never be updated, 
-                              even if the template file changes. Setting this 
-                              to true may give small performance gains. It 
+                              even if the template file changes. It 
                               always defaults to false.
 [<tt>:always_update</tt>]     Whether the JS files should be updated every 
                               time a controller is accessed, as opposed to 
@@ -36,12 +35,12 @@ options you can tweak (many of these were stolen from the SASS docs):
                               minified and will overwrite the corresponding 
                               JS file. Defaults to false in production mode, 
                               true otherwise.
-[<tt>:template_location</tt>] The directory where Sass templates should be 
+[<tt>:template_location</tt>] The directory where javascripts should be 
                               read from. Defaults to RAILS_ROOT + 
-                              "/public/stylesheets/jasmin".
+                              "/public/javascripts/jasmin".
 [<tt>:js_location</tt>]       The directory where JS output should be written 
                               to. Defaults to RAILS_ROOT + 
-                              "/public/stylesheets"
+                              "/public/javascripts"
 [<tt>:always_minify</tt>]     Causes to be minified always. Otherwise it's
                               only minified in production.
   
@@ -66,11 +65,11 @@ which is wrong. You can avoid this by using parens:
 
 JSLint checks for all of these problems. It is suggested that JSLint be used before using JSMin.
 
-http://www.jslint.com/
+http://www.jslint.com
   
-== Thanks
+== Special Thanks
 
 Thanks to Hampton Catlin for HAML & SASS, made making Jasmin a piece of cake!
 Check them out at:
 
-http://haml.hamptoncatlin.com/
+http://haml.hamptoncatlin.com
