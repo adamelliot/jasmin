@@ -6,25 +6,44 @@ in the public/javascripts folder. Much of the code was borrowed from the SASS
 part of HAML. You will need the jsmin gem:
 
   gem install jsmin
-  script/install plugin git://github.com/adamelliot/jazz.git
+  script/install plugin git://github.com/adamelliot/jasmin.git
+  
+== Usage
+
+If you want to use Jasmin all the time (by default it's only on in production
+to make sure JS debugging isn't a nightmere) add an initializer:
+
+  Jasmin.options[:alway_minify] = true
+
 
 == Options
 
 As Jasmin is simple and doesn't require much modifying, but there are a couple
 options you can tweak (many of these were stolen from the SASS docs):
 
-:never_update
-Whether the JS files should never be updated, even if the template file changes. Setting this to true may give small performance gains. It always defaults to false.
-:always_update
-Whether the JS files should be updated every time a controller is accessed, as opposed to only when the template has been modified. Defaults to false. 
-:always_check
-Whether a Sass template should be checked for updates every time a controller is accessed, as opposed to only when the Rails server starts. If a Sass template has been updated, it will be recompiled and will overwrite the corresponding CSS file. Defaults to false in production mode, true otherwise. Only has meaning within Ruby on Rails or Merb.
-:full_exception
-Whether an error in the Sass code should cause Sass to provide a detailed description. If set to true, the specific error will be displayed along with a line number and source snippet. Otherwise, a simple uninformative error message will be displayed. Defaults to false in production mode, true otherwise. Only has meaning within Ruby on Rails or Merb.
-:template_location
-The directory where Sass templates should be read from. Defaults to RAILS_ROOT + "/public/stylesheets/sass" or MERB_ROOT + "/public/stylesheets/sass". Only has meaning within Ruby on Rails or Merb.
-:css_location
-The directory where CSS output should be written to. Defaults to RAILS_ROOT + "/public/stylesheets" or MERB_ROOT + "/public/stylesheets". Only has meaning within Ruby on Rails or Merb.
+[<tt>:never_update</tt>]      Whether the JS files should never be updated, 
+                              even if the template file changes. Setting this 
+                              to true may give small performance gains. It 
+                              always defaults to false.
+[<tt>:always_update</tt>]     Whether the JS files should be updated every 
+                              time a controller is accessed, as opposed to 
+                              only when the template has been modified. 
+                              Defaults to false. 
+[<tt>:always_check</tt>]      Whether a JS files should be checked for 
+                              updates every time a controller is accessed, as 
+                              opposed to only when the Rails server starts. If 
+                              a JS file has been updated, it will be 
+                              minified and will overwrite the corresponding 
+                              JS file. Defaults to false in production mode, 
+                              true otherwise.
+[<tt>:template_location</tt>] The directory where Sass templates should be 
+                              read from. Defaults to RAILS_ROOT + 
+                              "/public/stylesheets/jasmin".
+[<tt>:js_location</tt>]       The directory where JS output should be written 
+                              to. Defaults to RAILS_ROOT + 
+                              "/public/stylesheets"
+[<tt>:always_minify</tt>]     Causes to be minified always. Otherwise it's
+                              only minified in production.
   
 == Caution (taken from: http://www.crockford.com/javascript/jsmin.html)
 
@@ -47,11 +66,11 @@ which is wrong. You can avoid this by using parens:
 
 JSLint checks for all of these problems. It is suggested that JSLint be used before using JSMin.
 
-  http://www.jslint.com/
+http://www.jslint.com/
   
 == Thanks
 
-Thanks to Hampton Catlin for HAML and SASS, made making Jasmin a piece of cake
-check them out at:
+Thanks to Hampton Catlin for HAML & SASS, made making Jasmin a piece of cake!
+Check them out at:
 
-  http://haml.hamptoncatlin.com/
+http://haml.hamptoncatlin.com/

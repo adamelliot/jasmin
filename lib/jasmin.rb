@@ -9,7 +9,6 @@ module Jasmin
       :js_location        => './public/javascripts',
       :always_update      => false,
       :always_check       => true,
-      :full_exception     => true,
       :dont_minify        => false # Use this to check that your new JS works
     }
     @@checked_for_updates = false
@@ -50,12 +49,15 @@ module Jasmin
           File.delete(js) if File.exists?(js)
 
           filename = template_filename(name)
-          # TODO: JSMIN
           result = begin
-                     JSMin.minify(File.read(filename))
-                    rescue Exception => e
-                      exception_string(e)
-                    end
+                     if RAILS_ENV == "production" || options[:alway_minify]
+                       JSMin.minify(File.read(filename))
+                     else  
+                       File.read(filename))
+                     end
+                   rescue Exception => e
+                     exception_string(e)
+                   end
 
           # Create any directories that might be necessary
           dirs = [options[:js_location]]
@@ -73,9 +75,8 @@ module Jasmin
     private
   
     def exception_string(e)
-      if options[:full_exception]
-        e_string = "#{e.class}: #{e.message}"
-        <<END
+      e_string = "#{e.class}: #{e.message}"
+      <<END
 /*
 #{e_string}
 
@@ -86,10 +87,6 @@ white-space: pre;
 font-family: monospace;
 content: "#{e_string.gsub('"', '\"').gsub("\n", '\\A ')}"; }
 END
-        # Fix an emacs syntax-highlighting hiccup: '
-      else
-        "/* Internal javascript error */"
-      end
     end
 
     def template_filename(name)
