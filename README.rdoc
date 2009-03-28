@@ -24,6 +24,9 @@ in the jasmin folder, otherwise it will be overwritten.
 As Jasmin is simple and doesn't require much modifying, but there are a couple
 options you can tweak (many of these were stolen from the SASS docs):
 
+[<tt>:always_minify</tt>]     Causes to be minified always. Otherwise it's
+                              only minified in production.
+[<tt>:never_minify</tt>]      Turns off minification under all environments.
 [<tt>:never_update</tt>]      Whether the JS files should never be updated, 
                               even if the template file changes. It 
                               always defaults to false.
@@ -44,8 +47,6 @@ options you can tweak (many of these were stolen from the SASS docs):
 [<tt>:js_location</tt>]       The directory where JS output should be written 
                               to. Defaults to RAILS_ROOT + 
                               "/public/javascripts"
-[<tt>:always_minify</tt>]     Causes to be minified always. Otherwise it's
-                              only minified in production.
   
 == Caution (taken from: http://www.crockford.com/javascript/jsmin.html)
 

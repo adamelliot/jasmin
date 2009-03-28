@@ -50,7 +50,7 @@ module Jasmin
 
           filename = template_filename(name)
           result = begin
-                     if RAILS_ENV == "production" || options[:always_minify]
+                     if (RAILS_ENV == "production" || options[:always_minify]) && not options[:never_minify]
                        JSMin.minify(File.read(filename))
                      else  
                        File.read(filename)
