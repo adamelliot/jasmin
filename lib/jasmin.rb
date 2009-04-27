@@ -33,13 +33,13 @@ module Jasmin
     # Checks each javascript in <tt>options[:js_location]</tt>
     # to see if it needs updating,
     # and updates it using the corresponding javascript
-    # from <tt>options[:template_location]</tt>
+    # from <tt>options[:template_location]</tt>z
     # if it does.
     def update_javascripts
       return if options[:never_update]
 
       @@checked_for_updates = true
-      Dir.glob(File.join(options[:template_location], "**", "*")).entries.each do |file|
+      Dir.glob(File.join(options[:template_location], "**", "*.js")).entries.each do |file|
 
         # Get the relative path to the file with no extension
         name = file.sub(options[:template_location] + "/", "")[0...-3]
